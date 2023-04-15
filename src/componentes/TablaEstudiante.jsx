@@ -1,4 +1,4 @@
-
+import { useState } from "react";
 
 
 
@@ -9,9 +9,28 @@ export const TablaEstudiante = ({ eliminar, listaEstudiantes }) => {
 
     }
 
+    const [filtro, setFiltro] = useState("");
+
+    const filtrado = (event) => {
+        setFiltro(event.target.value);
+    };
+
+    const estudiantesFiltrados = listaEstudiantes.filtro((estudiante) =>
+        estudiante.nombre.toLowerCase().includes(filtro.toLowerCase())
+    );
+
 
     return (
         <>
+
+            <nav class="d-inline-flex p-2 bd-highlight" >
+                <label htmlFor="filtroEstudiante">Filtro por Nombre:</label>
+                <form class="form-inline">
+                    <input
+                        class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={filtrado} />
+                </form>
+            </nav>
+
             <table className="table">
                 <thead>
                     <tr>
@@ -23,7 +42,7 @@ export const TablaEstudiante = ({ eliminar, listaEstudiantes }) => {
                 </thead>
                 <tbody>
                     {
-                        listaEstudiantes.map((estudiante, index) => <tr key={index}>
+                        estudiantesFiltrados.map((estudiante, index) => <tr key={index}>
                             <td>{estudiante.id}</td>
                             <td>{estudiante.nombre}</td>
                             <td>{estudiante.semestre}</td>
