@@ -1,13 +1,7 @@
 import { useState } from "react";
 
 
-
-
-export const TablaEstudiante = ({ eliminar, listaEstudiantes }) => {
-
-    const editar = () => {
-
-    }
+export const TablaEstudiante = ({ eliminar, listaEstudiantes, extrae }) => {
 
     const [filtro, setFiltro] = useState("");
 
@@ -23,11 +17,11 @@ export const TablaEstudiante = ({ eliminar, listaEstudiantes }) => {
     return (
         <>
 
-            <nav class="d-inline-flex p-2 bd-highlight" >
+            <nav className="d-inline-flex p-2 bd-highlight" >
                 <label htmlFor="filtroEstudiante">Filtro por Nombre:</label>
-                <form class="form-inline">
+                <form className="form-inline">
                     <input
-                        class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={filtrado} />
+                        className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={filtrado} />
                 </form>
             </nav>
 
@@ -46,7 +40,7 @@ export const TablaEstudiante = ({ eliminar, listaEstudiantes }) => {
                             <td>{estudiante.id}</td>
                             <td>{estudiante.nombre}</td>
                             <td>{estudiante.semestre}</td>
-                            <td> <button className="btn btn-info" onClick={editar}>Editar</button></td>
+                            <td> <button className="btn btn-info" onClick={() => extrae(index)}>Editar</button></td>
                             <button className="btn btn-info" onClick={() => eliminar(index)} id={estudiante.id}>Eliminar</button>
                         </tr>)
                     }
