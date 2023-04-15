@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 
 
 
-export const FormularioEstudiante = ({ agregar, datos, editar}) => {
+export const FormularioEstudiante = ({ agregar, datos, editar, estudiantes}) => {
     const [id, setId] = useState("");
     const [nombre, setNombre] = useState("");
     const [semestre, setSemestre] = useState("");
@@ -20,9 +20,18 @@ export const FormularioEstudiante = ({ agregar, datos, editar}) => {
         }   
     }
 
+    const desabiliBoton = (index)=>{
+        const ide = document.getElementById('id');
+        if(index ==0){
+            ide.disabled= true;
+        }else{
+            ide.disabled= false;
+        }   
+    }
     useEffect(() => {
         if (datos) {
             setId(datos.id);
+            desabiliBoton(0)
             setNombre(datos.nombre);
             setSemestre(datos.semestre);
             botonMostrar(0);
@@ -39,17 +48,23 @@ export const FormularioEstudiante = ({ agregar, datos, editar}) => {
         let estudiante = {
             id: id,
             nombre: nombre,
-            semestre: semestre
-        }
-        if(valorBoton == "Registrar"){
-            agregar(estudiante)
-            limpiar();
-        }else{
-            editar(estudiante)
-            limpiar();
-        }
-        
-    }
+            semestre: semestre}
+
+        const idExiste = estudiantes.some(estu => estu.id === id); // some verifica si algo existe.
+
+        if (id === "" || nombre === "" || semestre === "") {
+            alert(`Complete todos los espacios primero`);
+        } else {
+            if(valorBoton == "Registrar"){
+                if (idExiste) {
+                    alert(`El ID ${id} ya existe`);
+                }else{
+                    agregar(estudiante);
+                    limpiar();}}
+            else{
+                editar(estudiante);
+                limpiar();
+            }}}
 
     return (
         <>
@@ -67,7 +82,7 @@ export const FormularioEstudiante = ({ agregar, datos, editar}) => {
                     <input type="text" className="form-control" id="semestre" placeholder="semestre" value={semestre} onChange={(event) => setSemestre(event.target.value)} />
                 </div>   
             </form>
-            <button type="submit" className="btn btn-primary" onClick={() => {guardarEstudiante(boton); botonMostrar(1)}} >{boton}</button>
+            <button type="submit" className="btn btn-primary" onClick={() => {guardarEstudiante(boton); botonMostrar(1); desabiliBoton(1)}} >{boton}</button>
         </>
     )
 }
