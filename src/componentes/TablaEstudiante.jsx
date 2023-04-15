@@ -3,13 +3,6 @@ import { useState } from "react";
 
 export const TablaEstudiante = ({ eliminar, listaEstudiantes, extrae }) => {
 
-    // const [estudianteEditar, setEstudianteEditar] = useState(null);
-
-    // const editar = (index) => {
-    //     const estudianteDatos = listaEstudiantes.find((_, i) => i === index);
-    //     setEstudianteEditar(estudianteDatos);
-    // }
-
     const [filtro, setFiltro] = useState("");
 
     const filtrado = (event) => {
@@ -24,11 +17,11 @@ export const TablaEstudiante = ({ eliminar, listaEstudiantes, extrae }) => {
     return (
         <>
 
-            <nav class="d-inline-flex p-2 bd-highlight" >
+            <nav className="d-inline-flex p-2 bd-highlight" >
                 <label htmlFor="filtroEstudiante">Filtro por Nombre:</label>
-                <form class="form-inline">
+                <form className="form-inline">
                     <input
-                        class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={filtrado} />
+                        className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={filtrado} />
                 </form>
             </nav>
 

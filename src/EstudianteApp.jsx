@@ -26,19 +26,19 @@ export const EstudiantesApp = () => {
         const estudiante = estudiantes.find((_, i) => i === index);
         setDatos(estudiante);
       };
-    // const editarEstudiante = (index, estudianteEditado) =>{
-    //     setEstudiantes(estudiantes.map((estudiante, i) => {
-    //             if(i === index){
-    //                  return estudianteEditado;
-    //             }else{
-    //                 return estudiante
-    //             }
-    //         }));
+    const editarEstudiante = (estudianteEditado) =>{
+        setEstudiantes(estudiantes.map((estudiante) => {
+                if(estudianteEditado.id === estudiante.id){
+                     return estudianteEditado;
+                }else{
+                    return estudiante
+                }
+            }));
           
-    // }
+    }
     return (
         <>
-            <FormularioEstudiante agregar={(estu) => { agregarEstudiante(estu) }} datos={datos} />
+            <FormularioEstudiante agregar={(estu) => { agregarEstudiante(estu) }} datos={datos} editar={(index,estudianteEditado) => { editarEstudiante(index,estudianteEditado)  }} estudiantes={estudiantes} />
             <TablaEstudiante eliminar={(index) => eliminarEstudiante(index)} listaEstudiantes={estudiantes} extrae={extraeDatos} />
         </>
     )
