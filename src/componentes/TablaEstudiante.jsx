@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 export const TablaEstudiante = ({ eliminar, listaEstudiantes, extrae }) => {
 
     const [filtro, setFiltro] = useState("");
@@ -12,7 +11,6 @@ export const TablaEstudiante = ({ eliminar, listaEstudiantes, extrae }) => {
     const estudiantesFiltrados = listaEstudiantes.filter((estudiante) =>
         estudiante.nombre.toLowerCase().includes(filtro.toLowerCase())
     );
-
 
     return (
         <>
