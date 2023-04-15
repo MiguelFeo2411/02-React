@@ -84,7 +84,8 @@ export const FormularioEstudiante = ({ agregar, datos, editar, estudiantes }) =>
                     <input type="text" className="form-control" id="semestre" placeholder="semestre" value={semestre} onChange={(event) => setSemestre(event.target.value)} />
                 </div>
             </form>
-            <button type="submit" className="btn btn-primary" onClick={() => { guardarEstudiante(boton); botonMostrar(1); desabiliBoton(1) }} >{boton}</button>
+            <br></br>
+            <button type="submit" className="btn btn-danger" onClick={() => { guardarEstudiante(boton); botonMostrar(1); desabiliBoton(1) }} >{boton}</button>
         </>
     )
 }

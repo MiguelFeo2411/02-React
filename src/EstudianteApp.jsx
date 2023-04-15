@@ -34,6 +34,7 @@ export const EstudiantesApp = () => {
     return (
         <>
             <body>
+                <h1>Lista de Estudiantes</h1>
                 <FormularioEstudiante agregar={(estu) => { agregarEstudiante(estu) }} datos={datos} editar={(index, estudianteEditado) => { editarEstudiante(index, estudianteEditado) }} estudiantes={estudiantes} />
                 <TablaEstudiante eliminar={(index) => eliminarEstudiante(index)} listaEstudiantes={estudiantes} extrae={extraeDatos} />
             </body>
