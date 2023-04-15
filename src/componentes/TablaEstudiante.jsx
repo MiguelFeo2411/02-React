@@ -15,7 +15,7 @@ export const TablaEstudiante = ({ eliminar, listaEstudiantes }) => {
         setFiltro(event.target.value);
     };
 
-    const estudiantesFiltrados = listaEstudiantes.filtro((estudiante) =>
+    const estudiantesFiltrados = listaEstudiantes.filter((estudiante) =>
         estudiante.nombre.toLowerCase().includes(filtro.toLowerCase())
     );
 
