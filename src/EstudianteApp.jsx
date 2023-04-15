@@ -19,12 +19,35 @@ export const EstudiantesApp = () => {
     const eliminarEstudiante = (index) => {
         setEstudiantes(estudiantes.filter((_, i) => i !== index));  //el segundo parametro indica la posicion y la filtra de la lista
     }
-
-
+    const editarEstudiante = (index, estudianteEditado) =>{
+        setEstudiantes(estudiantes.map((estudiante, i) => {
+                if(i === index){
+                     return estudianteEditado;
+                }else{
+                    return estudiante
+                }
+            }));
+          
+    }
     return (
         <>
             <FormularioEstudiante agregar={(estu) => { agregarEstudiante(estu) }} />
-            <TablaEstudiante eliminar={(index) => eliminarEstudiante(index)} listaEstudiantes={estudiantes} />
+            <TablaEstudiante eliminar={(index) => eliminarEstudiante(index)} listaEstudiantes={estudiantes} editar={(index, estudianteEditado)=> editarEstudiante(index, estudianteEditado)}/>
         </>
     )
 }
+
+// const editarEstudiante = (index, {id,nombre,semestre}) =>{
+//     const estudianteListo = ()=>{
+//         estudiantes.find((estudiante, i) => {
+//             if(i === index){
+//                 return(
+//                     {
+                        
+//                     }
+//                 )
+//             }
+        
+//         })
+//     }   
+// }
