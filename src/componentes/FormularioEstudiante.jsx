@@ -1,14 +1,22 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
 
 
 
 
-export const FormularioEstudiante = ({ agregar }) => {
+export const FormularioEstudiante = ({ agregar, datos }) => {
     const [id, setId] = useState("");
     const [nombre, setNombre] = useState("");
     const [semestre, setSemestre] = useState("");
+
+    useEffect(() => {
+        if (datos) {
+            setId(datos.id);
+            setNombre(datos.nombre);
+            setSemestre(datos.semestre);
+        }
+    }, [datos]);
 
     const guardarEstudiante = (event) => {
         event.preventDefault();

@@ -8,6 +8,8 @@ import { TablaEstudiante } from "./componentes/TablaEstudiante";
 
 export const EstudiantesApp = () => {
 
+    const [datos, setDatos] = useState(null);
+
     const [estudiantes, setEstudiantes] = useState([]);
     console.log(estudiantes);
 
@@ -19,35 +21,27 @@ export const EstudiantesApp = () => {
     const eliminarEstudiante = (index) => {
         setEstudiantes(estudiantes.filter((_, i) => i !== index));  //el segundo parametro indica la posicion y la filtra de la lista
     }
-    const editarEstudiante = (index, estudianteEditado) =>{
-        setEstudiantes(estudiantes.map((estudiante, i) => {
-                if(i === index){
-                     return estudianteEditado;
-                }else{
-                    return estudiante
-                }
-            }));
+
+    const extraeDatos = (index) => {
+        const estudiante = estudiantes.find((_, i) => i === index);
+        setDatos(estudiante);
+      };
+    // const editarEstudiante = (index, estudianteEditado) =>{
+    //     setEstudiantes(estudiantes.map((estudiante, i) => {
+    //             if(i === index){
+    //                  return estudianteEditado;
+    //             }else{
+    //                 return estudiante
+    //             }
+    //         }));
           
-    }
+    // }
     return (
         <>
-            <FormularioEstudiante agregar={(estu) => { agregarEstudiante(estu) }} />
-            <TablaEstudiante eliminar={(index) => eliminarEstudiante(index)} listaEstudiantes={estudiantes} editar={(index, estudianteEditado)=> editarEstudiante(index, estudianteEditado)}/>
+            <FormularioEstudiante agregar={(estu) => { agregarEstudiante(estu) }} datos={datos} />
+            <TablaEstudiante eliminar={(index) => eliminarEstudiante(index)} listaEstudiantes={estudiantes} extrae={extraeDatos} />
         </>
     )
 }
 
-// const editarEstudiante = (index, {id,nombre,semestre}) =>{
-//     const estudianteListo = ()=>{
-//         estudiantes.find((estudiante, i) => {
-//             if(i === index){
-//                 return(
-//                     {
-                        
-//                     }
-//                 )
-//             }
-        
-//         })
-//     }   
-// }
+// editar={(index, estudianteEditado)=> editarEstudiante(index, estudianteEditado)}

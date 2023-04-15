@@ -1,13 +1,14 @@
 import { useState } from "react";
 
 
+export const TablaEstudiante = ({ eliminar, listaEstudiantes, extrae }) => {
 
+    // const [estudianteEditar, setEstudianteEditar] = useState(null);
 
-export const TablaEstudiante = ({ eliminar, listaEstudiantes }) => {
-
-    const editar = () => {
-
-    }
+    // const editar = (index) => {
+    //     const estudianteDatos = listaEstudiantes.find((_, i) => i === index);
+    //     setEstudianteEditar(estudianteDatos);
+    // }
 
     const [filtro, setFiltro] = useState("");
 
@@ -46,7 +47,7 @@ export const TablaEstudiante = ({ eliminar, listaEstudiantes }) => {
                             <td>{estudiante.id}</td>
                             <td>{estudiante.nombre}</td>
                             <td>{estudiante.semestre}</td>
-                            <td> <button className="btn btn-info" onClick={editar}>Editar</button></td>
+                            <td> <button className="btn btn-info" onClick={() => extrae(index)}>Editar</button></td>
                             <button className="btn btn-info" onClick={() => eliminar(index)} id={estudiante.id}>Eliminar</button>
                         </tr>)
                     }
