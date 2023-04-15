@@ -33,8 +33,10 @@ export const EstudiantesApp = () => {
     }
     return (
         <>
-            <FormularioEstudiante agregar={(estu) => { agregarEstudiante(estu) }} datos={datos} editar={(index, estudianteEditado) => { editarEstudiante(index, estudianteEditado) }} estudiantes={estudiantes} />
-            <TablaEstudiante eliminar={(index) => eliminarEstudiante(index)} listaEstudiantes={estudiantes} extrae={extraeDatos} />
+            <body>
+                <FormularioEstudiante agregar={(estu) => { agregarEstudiante(estu) }} datos={datos} editar={(index, estudianteEditado) => { editarEstudiante(index, estudianteEditado) }} estudiantes={estudiantes} />
+                <TablaEstudiante eliminar={(index) => eliminarEstudiante(index)} listaEstudiantes={estudiantes} extrae={extraeDatos} />
+            </body>
         </>
     )
 }
