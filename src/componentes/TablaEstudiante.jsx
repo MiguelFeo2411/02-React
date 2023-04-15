@@ -12,6 +12,15 @@ export const TablaEstudiante = ({ eliminar, listaEstudiantes }) => {
 
     return (
         <>
+
+            <nav class="d-inline-flex p-2 bd-highlight" >
+                <label htmlFor="filtroEstudiante">Filtro por Nombre:</label>
+                <form class="form-inline">
+                    <input
+                        class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"  />
+                </form>
+            </nav>
+
             <table className="table">
                 <thead>
                     <tr>
