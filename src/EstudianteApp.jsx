@@ -7,7 +7,6 @@ export const EstudiantesApp = () => {
     const [datos, setDatos] = useState(null);
 
     const [estudiantes, setEstudiantes] = useState([]);
-    console.log(estudiantes);
 
     const agregarEstudiante = (estudiante) => {
         setEstudiantes([...estudiantes, estudiante])

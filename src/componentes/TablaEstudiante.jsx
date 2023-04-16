@@ -15,15 +15,21 @@ export const TablaEstudiante = ({ eliminar, listaEstudiantes, extrae }) => {
     return (
         <>
             <nav className="d-inline-flex p-2 bd-highlight" >
-                <label htmlFor="filtroEstudiante">Filtro por Nombre:</label>
+                <span className="filtro-label">Filtro por Nombre:</span>
                 <form className="form-inline">
                     <input
-                        className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={filtrado} />
+                        className="form-control mr-sm-2 filtro-input"
+                        type="search"
+                        placeholder="Buscar"
+                        aria-label="Buscar"
+                        onChange={filtrado}
+                    />
                 </form>
             </nav>
 
-            <div class="table-responsive">
-                <table class="table table-striped">
+
+            <div className="table-responsive">
+                <table className="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col">Id Estudiante</th>
@@ -40,8 +46,8 @@ export const TablaEstudiante = ({ eliminar, listaEstudiantes, extrae }) => {
                                     <td>{estudiante.nombre}</td>
                                     <td>{estudiante.semestre}</td>
                                     <td>
-                                        <button type="button" class="btn btn-secondary" onClick={() => extrae(index)}>Editar</button>
-                                        <button type="button" class="btn btn-dark" onClick={() => eliminar(index)}>Eliminar</button>
+                                        <button type="button" className="btn btn-secondary" onClick={() => extrae(index)}>Editar</button>
+                                        <button type="button" className="btn btn-dark" onClick={() => eliminar(index)}>Eliminar</button>
                                     </td>
                                 </tr>
                             ))}
